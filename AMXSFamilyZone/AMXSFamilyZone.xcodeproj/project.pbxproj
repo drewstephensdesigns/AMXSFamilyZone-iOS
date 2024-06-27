@@ -39,6 +39,11 @@
 		5A2065692C2DC63D00704007 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065652C2DC63D00704007 /* ProfileView.swift */; };
 		5A20656C2C2DC64E00704007 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20656A2C2DC64E00704007 /* SettingsView.swift */; };
 		5A20656D2C2DC64E00704007 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20656B2C2DC64E00704007 /* EditProfileView.swift */; };
+		5A2065752C2DDEF000704007 /* amxs-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065742C2DDEF000704007 /* amxs-hd.png */; };
+		5A20657A2C2DDF0800704007 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065762C2DDF0800704007 /* 03.png */; };
+		5A20657B2C2DDF0800704007 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065772C2DDF0800704007 /* 04.png */; };
+		5A20657C2C2DDF0800704007 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065782C2DDF0800704007 /* 01.png */; };
+		5A20657D2C2DDF0800704007 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065792C2DDF0800704007 /* 02.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +75,11 @@
 		5A2065652C2DC63D00704007 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/ProfileView.swift"; sourceTree = "<group>"; };
 		5A20656A2C2DC64E00704007 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/SettingsView.swift"; sourceTree = "<group>"; };
 		5A20656B2C2DC64E00704007 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/EditProfileView.swift"; sourceTree = "<group>"; };
+		5A2065742C2DDEF000704007 /* amxs-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "amxs-hd.png"; path = "../../../../Downloads/amxs-hd.png"; sourceTree = "<group>"; };
+		5A2065762C2DDF0800704007 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 03.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/03.png"; sourceTree = "<group>"; };
+		5A2065772C2DDF0800704007 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 04.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/04.png"; sourceTree = "<group>"; };
+		5A2065782C2DDF0800704007 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 01.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/01.png"; sourceTree = "<group>"; };
+		5A2065792C2DDF0800704007 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 02.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/02.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,7 @@
 		5A2065112C2DC1E600704007 = {
 			isa = PBXGroup;
 			children = (
+				5A2065732C2DDED700704007 /* screenshots */,
 				5A20651C2C2DC1E600704007 /* AMXSFamilyZone */,
 				5A20651B2C2DC1E600704007 /* Products */,
 			);
@@ -202,6 +213,19 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		5A2065732C2DDED700704007 /* screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				5A2065782C2DDF0800704007 /* 01.png */,
+				5A2065792C2DDF0800704007 /* 02.png */,
+				5A2065762C2DDF0800704007 /* 03.png */,
+				5A2065772C2DDF0800704007 /* 04.png */,
+				5A2065742C2DDEF000704007 /* amxs-hd.png */,
+			);
+			name = screenshots;
+			path = ../screenshots;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -271,9 +295,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A20657A2C2DDF0800704007 /* 03.png in Resources */,
+				5A2065752C2DDEF000704007 /* amxs-hd.png in Resources */,
 				5A2065252C2DC1E800704007 /* Preview Assets.xcassets in Resources */,
+				5A20657D2C2DDF0800704007 /* 02.png in Resources */,
+				5A20657B2C2DDF0800704007 /* 04.png in Resources */,
 				5A2065222C2DC1E700704007 /* Assets.xcassets in Resources */,
 				5A2065302C2DC3CE00704007 /* GoogleService-Info.plist in Resources */,
+				5A20657C2C2DDF0800704007 /* 01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
