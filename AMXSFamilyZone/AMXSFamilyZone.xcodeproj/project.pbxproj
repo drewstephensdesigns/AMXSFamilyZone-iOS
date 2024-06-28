@@ -7,11 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1A7F782C2F47BA006B9290 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F772C2F47BA006B9290 /* ForgotPasswordView.swift */; };
+		5A1A7F7A2C2F47E0006B9290 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F792C2F47E0006B9290 /* LoginView.swift */; };
+		5A1A7F7C2C2F4807006B9290 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F7B2C2F4807006B9290 /* RegisterView.swift */; };
+		5A1A7F7E2C2F4853006B9290 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F7D2C2F4853006B9290 /* HomeView.swift */; };
+		5A1A7F802C2F485C006B9290 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F7F2C2F485C006B9290 /* AddPostView.swift */; };
+		5A1A7F822C2F4865006B9290 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F812C2F4865006B9290 /* ResourcesView.swift */; };
+		5A1A7F842C2F4871006B9290 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F832C2F4871006B9290 /* ProfileView.swift */; };
+		5A1A7F862C2F48CC006B9290 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F852C2F48CC006B9290 /* PostView.swift */; };
+		5A1A7F882C2F4900006B9290 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F872C2F4900006B9290 /* EditProfileView.swift */; };
+		5A1A7F8A2C2F49B8006B9290 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A1A7F892C2F49B8006B9290 /* GoogleService-Info.plist */; };
 		5A20651E2C2DC1E600704007 /* AMXSFamilyZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20651D2C2DC1E600704007 /* AMXSFamilyZoneApp.swift */; };
 		5A2065202C2DC1E600704007 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20651F2C2DC1E600704007 /* ContentView.swift */; };
 		5A2065222C2DC1E700704007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065212C2DC1E700704007 /* Assets.xcassets */; };
 		5A2065252C2DC1E800704007 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065242C2DC1E800704007 /* Preview Assets.xcassets */; };
-		5A2065302C2DC3CE00704007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A20652F2C2DC3CE00704007 /* GoogleService-Info.plist */; };
 		5A2065342C2DC3E400704007 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065312C2DC3E400704007 /* AuthManager.swift */; };
 		5A2065352C2DC3E400704007 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065322C2DC3E400704007 /* Consts.swift */; };
 		5A2065362C2DC3E400704007 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065332C2DC3E400704007 /* ImagePicker.swift */; };
@@ -29,16 +38,6 @@
 		5A2065512C2DC48E00704007 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5A2065502C2DC48E00704007 /* FirebaseFirestoreSwift */; };
 		5A2065532C2DC48E00704007 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5A2065522C2DC48E00704007 /* FirebaseStorage */; };
 		5A2065562C2DC4B100704007 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5A2065552C2DC4B100704007 /* SDWebImageSwiftUI */; };
-		5A20655D2C2DC5AB00704007 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20655A2C2DC5AB00704007 /* RegisterView.swift */; };
-		5A20655E2C2DC5AB00704007 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20655B2C2DC5AB00704007 /* ForgotPasswordView.swift */; };
-		5A20655F2C2DC5AB00704007 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20655C2C2DC5AB00704007 /* LoginView.swift */; };
-		5A2065612C2DC60600704007 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065602C2DC60600704007 /* PostView.swift */; };
-		5A2065662C2DC63D00704007 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065622C2DC63D00704007 /* AddPostView.swift */; };
-		5A2065672C2DC63D00704007 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065632C2DC63D00704007 /* HomeView.swift */; };
-		5A2065682C2DC63D00704007 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065642C2DC63D00704007 /* ResourcesView.swift */; };
-		5A2065692C2DC63D00704007 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2065652C2DC63D00704007 /* ProfileView.swift */; };
-		5A20656C2C2DC64E00704007 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20656A2C2DC64E00704007 /* SettingsView.swift */; };
-		5A20656D2C2DC64E00704007 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20656B2C2DC64E00704007 /* EditProfileView.swift */; };
 		5A2065752C2DDEF000704007 /* amxs-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065742C2DDEF000704007 /* amxs-hd.png */; };
 		5A20657A2C2DDF0800704007 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065762C2DDF0800704007 /* 03.png */; };
 		5A20657B2C2DDF0800704007 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065772C2DDF0800704007 /* 04.png */; };
@@ -47,12 +46,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A1A7F772C2F47BA006B9290 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		5A1A7F792C2F47E0006B9290 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5A1A7F7B2C2F4807006B9290 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		5A1A7F7D2C2F4853006B9290 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5A1A7F7F2C2F485C006B9290 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
+		5A1A7F812C2F4865006B9290 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
+		5A1A7F832C2F4871006B9290 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5A1A7F852C2F48CC006B9290 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		5A1A7F872C2F4900006B9290 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		5A1A7F892C2F49B8006B9290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/AMXSFamilyZone/AMXSFamilyZone/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5A1A7F8B2C2F49BC006B9290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A20651A2C2DC1E600704007 /* AMXSFamilyZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMXSFamilyZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A20651D2C2DC1E600704007 /* AMXSFamilyZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMXSFamilyZoneApp.swift; sourceTree = "<group>"; };
 		5A20651F2C2DC1E600704007 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A2065212C2DC1E700704007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A2065242C2DC1E800704007 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5A20652F2C2DC3CE00704007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A2065312C2DC3E400704007 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		5A2065322C2DC3E400704007 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		5A2065332C2DC3E400704007 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -65,16 +74,6 @@
 		5A2065432C2DC41C00704007 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5A2065442C2DC41C00704007 /* ResourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceItem.swift; sourceTree = "<group>"; };
 		5A2065452C2DC41C00704007 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5A20655A2C2DC5AB00704007 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/Screens/RegisterView.swift"; sourceTree = "<group>"; };
-		5A20655B2C2DC5AB00704007 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/Screens/ForgotPasswordView.swift"; sourceTree = "<group>"; };
-		5A20655C2C2DC5AB00704007 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/Screens/LoginView.swift"; sourceTree = "<group>"; };
-		5A2065602C2DC60600704007 /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/PostView.swift"; sourceTree = "<group>"; };
-		5A2065622C2DC63D00704007 /* AddPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPostView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/AddPostView.swift"; sourceTree = "<group>"; };
-		5A2065632C2DC63D00704007 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/HomeView.swift"; sourceTree = "<group>"; };
-		5A2065642C2DC63D00704007 /* ResourcesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourcesView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/ResourcesView.swift"; sourceTree = "<group>"; };
-		5A2065652C2DC63D00704007 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/ProfileView.swift"; sourceTree = "<group>"; };
-		5A20656A2C2DC64E00704007 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/SettingsView.swift"; sourceTree = "<group>"; };
-		5A20656B2C2DC64E00704007 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileView.swift; path = "../../../../../../Projects/iOSProjects   /AMXSFamilyZone-iOS/View/NavView/EditProfileView.swift"; sourceTree = "<group>"; };
 		5A2065742C2DDEF000704007 /* amxs-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "amxs-hd.png"; path = "../../../../Downloads/amxs-hd.png"; sourceTree = "<group>"; };
 		5A2065762C2DDF0800704007 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 03.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/03.png"; sourceTree = "<group>"; };
 		5A2065772C2DDF0800704007 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 04.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/04.png"; sourceTree = "<group>"; };
@@ -98,9 +97,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A1A7F732C2F471E006B9290 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5A1A7F762C2F4777006B9290 /* SubView */,
+				5A1A7F752C2F4770006B9290 /* SignUp */,
+				5A1A7F742C2F4767006B9290 /* NavView */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5A1A7F742C2F4767006B9290 /* NavView */ = {
+			isa = PBXGroup;
+			children = (
+				5A1A7F7D2C2F4853006B9290 /* HomeView.swift */,
+				5A1A7F7F2C2F485C006B9290 /* AddPostView.swift */,
+				5A1A7F812C2F4865006B9290 /* ResourcesView.swift */,
+				5A1A7F832C2F4871006B9290 /* ProfileView.swift */,
+			);
+			path = NavView;
+			sourceTree = "<group>";
+		};
+		5A1A7F752C2F4770006B9290 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				5A1A7F772C2F47BA006B9290 /* ForgotPasswordView.swift */,
+				5A1A7F792C2F47E0006B9290 /* LoginView.swift */,
+				5A1A7F7B2C2F4807006B9290 /* RegisterView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		5A1A7F762C2F4777006B9290 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				5A1A7F852C2F48CC006B9290 /* PostView.swift */,
+				5A1A7F872C2F4900006B9290 /* EditProfileView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		5A2065112C2DC1E600704007 = {
 			isa = PBXGroup;
 			children = (
+				5A1A7F892C2F49B8006B9290 /* GoogleService-Info.plist */,
 				5A2065732C2DDED700704007 /* screenshots */,
 				5A20651C2C2DC1E600704007 /* AMXSFamilyZone */,
 				5A20651B2C2DC1E600704007 /* Products */,
@@ -118,10 +158,10 @@
 		5A20651C2C2DC1E600704007 /* AMXSFamilyZone */ = {
 			isa = PBXGroup;
 			children = (
-				5A20652F2C2DC3CE00704007 /* GoogleService-Info.plist */,
+				5A1A7F8B2C2F49BC006B9290 /* GoogleService-Info.plist */,
+				5A1A7F732C2F471E006B9290 /* Screens */,
 				5A2065462C2DC41C00704007 /* Model */,
 				5A20653C2C2DC40100704007 /* Observable */,
-				5A20652E2C2DC23100704007 /* Screens */,
 				5A20652D2C2DC22C00704007 /* Utils */,
 				5A20651D2C2DC1E600704007 /* AMXSFamilyZoneApp.swift */,
 				5A20651F2C2DC1E600704007 /* ContentView.swift */,
@@ -149,16 +189,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		5A20652E2C2DC23100704007 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				5A2065592C2DC54E00704007 /* SubView */,
-				5A2065582C2DC54300704007 /* Navigation */,
-				5A2065572C2DC53400704007 /* Register */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
 		5A20653C2C2DC40100704007 /* Observable */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,37 +210,6 @@
 				5A2065452C2DC41C00704007 /* User.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5A2065572C2DC53400704007 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				5A20655B2C2DC5AB00704007 /* ForgotPasswordView.swift */,
-				5A20655C2C2DC5AB00704007 /* LoginView.swift */,
-				5A20655A2C2DC5AB00704007 /* RegisterView.swift */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
-		5A2065582C2DC54300704007 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				5A2065622C2DC63D00704007 /* AddPostView.swift */,
-				5A2065632C2DC63D00704007 /* HomeView.swift */,
-				5A2065652C2DC63D00704007 /* ProfileView.swift */,
-				5A2065642C2DC63D00704007 /* ResourcesView.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		5A2065592C2DC54E00704007 /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-				5A20656B2C2DC64E00704007 /* EditProfileView.swift */,
-				5A20656A2C2DC64E00704007 /* SettingsView.swift */,
-				5A2065602C2DC60600704007 /* PostView.swift */,
-			);
-			path = SubView;
 			sourceTree = "<group>";
 		};
 		5A2065732C2DDED700704007 /* screenshots */ = {
@@ -296,12 +295,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A20657A2C2DDF0800704007 /* 03.png in Resources */,
+				5A1A7F8A2C2F49B8006B9290 /* GoogleService-Info.plist in Resources */,
 				5A2065752C2DDEF000704007 /* amxs-hd.png in Resources */,
 				5A2065252C2DC1E800704007 /* Preview Assets.xcassets in Resources */,
 				5A20657D2C2DDF0800704007 /* 02.png in Resources */,
 				5A20657B2C2DDF0800704007 /* 04.png in Resources */,
 				5A2065222C2DC1E700704007 /* Assets.xcassets in Resources */,
-				5A2065302C2DC3CE00704007 /* GoogleService-Info.plist in Resources */,
 				5A20657C2C2DDF0800704007 /* 01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,29 +313,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2065402C2DC40200704007 /* Resource.swift in Sources */,
-				5A20656C2C2DC64E00704007 /* SettingsView.swift in Sources */,
 				5A2065202C2DC1E600704007 /* ContentView.swift in Sources */,
-				5A20655E2C2DC5AB00704007 /* ForgotPasswordView.swift in Sources */,
-				5A2065682C2DC63D00704007 /* ResourcesView.swift in Sources */,
 				5A2065352C2DC3E400704007 /* Consts.swift in Sources */,
-				5A2065662C2DC63D00704007 /* AddPostView.swift in Sources */,
 				5A2065482C2DC41C00704007 /* Post.swift in Sources */,
+				5A1A7F822C2F4865006B9290 /* ResourcesView.swift in Sources */,
+				5A1A7F802C2F485C006B9290 /* AddPostView.swift in Sources */,
 				5A2065362C2DC3E400704007 /* ImagePicker.swift in Sources */,
 				5A20653D2C2DC40100704007 /* Featured.swift in Sources */,
-				5A20655D2C2DC5AB00704007 /* RegisterView.swift in Sources */,
 				5A20654A2C2DC41C00704007 /* User.swift in Sources */,
 				5A20653E2C2DC40200704007 /* HomeFeed.swift in Sources */,
-				5A20655F2C2DC5AB00704007 /* LoginView.swift in Sources */,
+				5A1A7F862C2F48CC006B9290 /* PostView.swift in Sources */,
+				5A1A7F7C2C2F4807006B9290 /* RegisterView.swift in Sources */,
+				5A1A7F7E2C2F4853006B9290 /* HomeView.swift in Sources */,
 				5A2065472C2DC41C00704007 /* FeaturedItem.swift in Sources */,
-				5A2065672C2DC63D00704007 /* HomeView.swift in Sources */,
 				5A2065342C2DC3E400704007 /* AuthManager.swift in Sources */,
 				5A20653F2C2DC40200704007 /* PostListenerViewModel.swift in Sources */,
-				5A20656D2C2DC64E00704007 /* EditProfileView.swift in Sources */,
 				5A2065412C2DC40200704007 /* UserUtil.swift in Sources */,
 				5A2065492C2DC41C00704007 /* ResourceItem.swift in Sources */,
-				5A2065612C2DC60600704007 /* PostView.swift in Sources */,
-				5A2065692C2DC63D00704007 /* ProfileView.swift in Sources */,
+				5A1A7F882C2F4900006B9290 /* EditProfileView.swift in Sources */,
 				5A20651E2C2DC1E600704007 /* AMXSFamilyZoneApp.swift in Sources */,
+				5A1A7F7A2C2F47E0006B9290 /* LoginView.swift in Sources */,
+				5A1A7F842C2F4871006B9290 /* ProfileView.swift in Sources */,
+				5A1A7F782C2F47BA006B9290 /* ForgotPasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
