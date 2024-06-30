@@ -18,81 +18,98 @@ struct PostView: View {
     @State private var editText = ""
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            if let imageUrl = post.imageUrl, !imageUrl.isEmpty {
-                WebImage(url: URL(string: imageUrl))
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.width * 0.75)
-                    .cornerRadius(8)
-                    .padding(.bottom, 8)
-            }
+        VStack(alignment: .leading, spacing: 10){
+            ZStack{
+                if let imageUrl = post.imageUrl, !imageUrl.isEmpty {
+                    WebImage(url: URL(string: imageUrl))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                }
+            } // end of ZStack
             
+                // Text of Post
             Text(post.text)
-                .font(.callout)
+                .font(.subheadline)
                 .foregroundColor(.primary)
-                .lineLimit(nil)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 8)
-                .padding(.top, post.imageUrl == nil ? 8 : 0)  // Additional top padding if there's no image
+                .padding([.horizontal, .top], 6)
             
+                // Author of Post
             if let author = post.user?.email {
-                Text(author)
+                Text("Posted by: \(author)")
                     .font(.footnote)
-                    .foregroundColor(.primary)
-                    .padding(.horizontal, 8)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 6)
             }
             
+                // Timestamp for Post
             Text(post.getTimeStamp())
-                .font(.caption2)
+                .font(.caption)
                 .foregroundColor(.secondary)
-                .padding(.horizontal, 8)
-                .padding(.bottom, 8) // Added bottom padding for text-only posts
+                .padding(.horizontal, 6)
             
-            HStack {
-                Button(action: {
-                    sharePost(post: post)
-                }) {
+            
+            HStack{
+                    // Button for sharing post content
+                    // Image URL or Text if image is null
+                Button(action: {sharePost(post: post)}) {
                     Label("Share", systemImage: "square.and.arrow.up")
                 }
                 .padding(8)
-                .contentShape(Rectangle())
-                
                 Spacer()
                 
+                    // Hides edit/delete buttons if current user didn't make the post
                 if post.creatorID == Auth.auth().currentUser?.uid {
+                        // Options menu to make edit/delete buttons cleaner
+                    Menu {
+                            // Edit Post Button
+                        Button(action: {editText = post.text; showEditDialog = true}) {Label("Edit", systemImage: "pencil")}
+                        
+                            // Delete Post Button
+                        Button(action: {deletePost(postId: post.id!)}) {Label("Delete", systemImage: "trash")}
+                    } label: {Label("Options", systemImage: "ellipsis")}
+                        .padding(8)
+                } else {
                     Menu {
                         Button(action: {
-                            editText = post.text
-                            showEditDialog = true
+                            reportPost(postId: post.id!, reason: "This is inappropriate")
                         }) {
-                            Label("Edit", systemImage: "pencil")
+                            Label("This is inappropriate", systemImage: "flag")
                         }
                         
                         Button(action: {
-                            deletePost(postId: post.id!)
+                            reportPost(postId: post.id!, reason: "This is spam")
                         }) {
-                            Label("Delete", systemImage: "trash")
+                            Label("This is spam", systemImage: "flag")
+                        }
+                        
+                        Button(action: {
+                            reportPost(postId: post.id!, reason: "It made me uncomfortable")
+                        }) {
+                            Label("It made me uncomfortable", systemImage: "flag")
                         }
                     } label: {
                         Label("Options", systemImage: "ellipsis")
                     }
-                    .padding(8)
-                    .contentShape(Rectangle())
                 }
+                
+            } // end of HStack
+            .sheet(isPresented: $showEditDialog) {
+                EditPostView(postId: post.id!, originalText: post.text)
+                    .presentationDetents([.medium])
             }
-            .padding(.horizontal, 8)
-        }
-        .padding(8)
-        .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor.systemBackground)))
-        .shadow(color: Color.primary.opacity(0.2), radius: 2, x: 0, y: 2)
-        .padding([.horizontal, .top], 8)
-        .sheet(isPresented: $showEditDialog) {
-            EditPostView(postId: post.id!, originalText: post.text)
-        }
-    }
+            
+                // Adds a horizontal line between posts
+            Divider()
+                .foregroundColor(.white)
+            
+        } // end of VStack
+    } //end of view
     
-    func sharePost(post: Post) {
+    
+    // Shares Post Image (Firebase url) or Text (if image is null)
+    func sharePost(post: Post){
+        
         let items: [Any] = post.imageUrl == nil ? [post.text] : [URL(string: post.imageUrl!)!]
         
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -104,9 +121,10 @@ struct PostView: View {
         window.rootViewController?.present(av, animated: true, completion: nil)
     }
     
+    // Deletes post from Firebase
     func deletePost(postId: String) {
         let firestore = Firestore.firestore()
-        let documentReference = firestore.collection("Post").document(postId)
+        let documentReference = firestore.collection(Consts.POST_NODE).document(postId)
         
         documentReference.getDocument() { documentSnapshot, error in
             if let error = error {
@@ -133,7 +151,30 @@ struct PostView: View {
             }
         }
     }
-}
+    
+    // Function to report posts
+    func reportPost(postId: String, reason: String){
+        let firestore = Firestore.firestore()
+        let reportReference = firestore.collection(Consts.REPORTS_NODE).document()
+        
+        let reportData: [String: Any] = [
+            "postId": postId,
+            "reporterId": Auth.auth().currentUser?.uid ?? "",
+            "reason": reason,
+            "timestamp": Timestamp()
+        ]
+        
+        reportReference.setData(reportData) { error in
+            if let error = error {
+                print("Error reporting post: \(error)")
+            } else {
+                print("Post reported successfully for reason: \(reason)")
+            }
+        }
+    }
+    
+}// end of postview
+
 
 struct EditPostView: View {
     var postId: String
@@ -142,33 +183,32 @@ struct EditPostView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
+        VStack{
             TextField("Edit Post", text: $newText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
-            Button(action: {
-                updatePost(postId: postId, newText: newText)
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Update Post")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-            .padding()
-            
+            Button(action: {updatePost(postId: postId, newText: newText)
+                presentationMode.wrappedValue.dismiss()}) {
+                    
+                    Text("Update Post")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding()
             Spacer()
-        }
-        .onAppear {
-            newText = originalText
-        }
-    }
+                .onAppear {
+                    newText = originalText
+                }
+        } // end of VStack
+    } // end of body view
     
-    func updatePost(postId: String, newText: String) {
+    // Function for updating text of post, new text gets saved to Firebase
+    func updatePost(postId: String, newText: String){
         let firestore = Firestore.firestore()
-        let documentReference = firestore.collection("Post").document(postId)
+        let documentReference = firestore.collection(Consts.POST_NODE).document(postId)
         
         documentReference.getDocument() { documentSnapshot, error in
             if let error = error {
@@ -194,4 +234,4 @@ struct EditPostView: View {
             }
         }
     }
-}
+} // end of edit post view

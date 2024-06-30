@@ -14,7 +14,7 @@ class HomeFeed: ObservableObject {
     private var db = Firestore.firestore()
 
     func fetchPosts() {
-        db.collection("Post").order(by: "time", descending: true).addSnapshotListener { (querySnapshot, error) in
+        db.collection(Consts.POST_NODE).order(by: "time", descending: true).addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
                 return

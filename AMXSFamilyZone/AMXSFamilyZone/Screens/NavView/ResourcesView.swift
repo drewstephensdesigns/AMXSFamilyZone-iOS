@@ -13,136 +13,128 @@ struct ResourcesView: View {
     @ObservedObject var fetcher = Resource()
     @ObservedObject var featuredFetcher = Featured()
     
-    // Define the SF Symbol names as strings
+    // Array of SF Icons, that match up with the resources.json file
+    // The more resources that get added, the more icons that are needed
+    // List defaults back to the top if no icon is added
     let imageNames = [
-        "exclamationmark.shield",
+        "exclamationmark.shield", 
         "staroflife",
         "phone",
         "link",
         "mail.and.text.magnifyingglass",
-        "iphone.homebutton",
+        "iphone.homebutton", 
         "figure.mind.and.body",
         "cross.circle.fill",
         "giftcard",
-        "heart.text.square",
+        "heart.text.square", 
         "pencil.and.list.clipboard",
         "bandage",
         "figure.jumprope",
-        "globe.americas",
+        "globe.americas", 
         "graduationcap",
         "checkmark.bubble",
         "person.bust",
-        "figure.mind.and.body",
+        "figure.mind.and.body", 
         "pencil.and.ruler",
         "figure.and.child.holdinghands",
-        "waveform.path.ecg.rectangle",
+        "waveform.path.ecg.rectangle", 
         "calendar",
         "link",
         "rectangle.inset.filled.and.person.filled",
-        "network",
+        "network", 
         "globe.desk"
-        ]
+    ]
     
-    // Define an array of background colors for the cards
+    // Array of colors for the CardView background
+    // If more items are added to data.json, the colors
+    // will automatically update to the next available
     let backgroundColors: [Color] = [
         .red, .green, .blue, .orange, .purple, .yellow, .pink, .teal
     ]
     
     var body: some View {
         NavigationView {
-            VStack {
-                // Full width card view with dot indicators
-                TabView {
-                    ForEach(featuredFetcher.featured.indices, id: \.self) { index in
-                        let featuredItem = featuredFetcher.featured[index]
-                        let backgroundColor = backgroundColors[index % backgroundColors.count]
-                        
-                        VStack {
-                            Text(featuredItem.pubTitle)
-                                .font(.system(.footnote))
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.primary)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .padding()
-                                .background(backgroundColor)
-                                .cornerRadius(8)
-                                .onTapGesture {
-                                    openFeaturedLink(for: featuredItem, at: index)
-                                }
+            ScrollView {
+                VStack {
+                    TabView {
+                        ForEach(featuredFetcher.featured.indices, id: \.self) { index in
+                            let featuredItem = featuredFetcher.featured[index]
+                            let backgroundColor = backgroundColors[index % backgroundColors.count]
+                            
+                            VStack {
+                                Text(featuredItem.pubTitle)
+                                    .font(.system(.footnote))
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.primary)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .padding()
+                                    .background(backgroundColor)
+                                    .cornerRadius(8)
+                                    .onTapGesture {
+                                        openFeaturedLink(for: featuredItem, at: index)
+                                    }
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .frame(height: 200) // Adjust the height for the card view
-                
-                // Vertical List
-                Text("* Orange text denotes crisis response resources")
-                    .font(.system(.caption).bold())
-                    .foregroundColor(.orange)
-               
-                List(fetcher.resources.indices, id: \.self) { index in
-                    let item = fetcher.resources[index]
-                    let imageName = imageNames[index % imageNames.count]
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .frame(height: 200)
                     
-                    HStack {
-                        if UIImage(systemName: imageName) != nil {
-                            // Use SF Symbol
-                            Image(systemName: imageName)
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .padding(.trailing, 10)
-                        } else {
-                            // Fallback for custom images
-                            Image(imageName)
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .padding(.trailing, 10)
-                        }
+                    Text("* Orange text denotes crisis response resources")
+                        .font(.system(.caption).bold())
+                        .foregroundColor(.orange)
+                        .padding(.top, 10)
+                    
+                    ForEach(fetcher.resources.indices, id: \.self) { index in
+                        let item = fetcher.resources[index]
+                        let imageName = imageNames[index % imageNames.count]
                         
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(item.resourceName)
-                                .font(.system(.callout))
-                                .foregroundColor(index < 3 ? .orange : .primary) // Conditional color
-                            Text(item.resourceDescription)
-                                .font(.system(.footnote))
-                                .foregroundColor(.gray)
-                                .lineLimit(2)
-                                .truncationMode(.tail) // Add ellipses at the end if text overflows
+                        HStack(alignment: .top) {
+                            if UIImage(systemName: imageName) != nil {
+                                Image(systemName: imageName)
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .padding(.trailing, 10)
+                            } else {
+                                Image(imageName)
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .padding(.trailing, 10)
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(item.resourceName)
+                                    .font(.system(.subheadline))
+                                    .foregroundColor(index < 3 ? .orange : .primary)
+                                Text(item.resourceDescription)
+                                    .font(.system(.footnote))
+                                    .foregroundColor(.gray)
+                                    .lineLimit(2)
+                                    .truncationMode(.tail)
+                            }
+                            .onTapGesture {
+                                openLink(for: item, at: index)
+                            }
+                            Spacer() // This will push everything to the left
                         }
-                        .onTapGesture {
-                            openLink(for: item, at: index)
-                        }
+                        .padding(.vertical, 6)
                     }
-                    .padding(.vertical, 5) // Adjust the padding between rows
                 }
-                .listStyle(.plain)
-                .listRowSpacing(2)
+                .padding(.horizontal)
             }
             .navigationTitle("Resources")
         }
     }
     
     private func openLink(for item: ResourceItem, at index: Int) {
-        let urlString: String
-        if index == 5 {
-            // Special URL for the fifth item
-            // Breaks on XCODE Simulator, but should work in prod
-            urlString = "https://apps.apple.com/us/app/usaf-connect/id1403806821"
-        } else {
-            // Use the resource link for other items
-            urlString = item.resourceLink
-        }
-        
+        let urlString = index == 5 ? "https://apps.apple.com/us/app/usaf-connect/id1403806821" : item.resourceLink
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
     private func openFeaturedLink(for item: FeaturedItem, at index: Int) {
-        let urlString: String
-        urlString = item.pubUrl
-        if let url = URL(string: urlString) {
+        if let url = URL(string: item.pubUrl) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -151,9 +143,8 @@ struct ResourcesView: View {
 struct ResourcesView_Previews: PreviewProvider {
     static var previews: some View {
         ResourcesView()
-            .preferredColorScheme(.light) // For light mode preview
+            .preferredColorScheme(.light)
         ResourcesView()
-            .preferredColorScheme(.dark) // For dark mode preview
+            .preferredColorScheme(.dark)
     }
 }
-

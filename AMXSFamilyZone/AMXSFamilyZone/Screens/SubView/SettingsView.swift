@@ -8,13 +8,18 @@
 import SwiftUI
 import Firebase
 import MessageUI
+import UserNotifications
 
 struct SettingsView: View {
+    @AppStorage("isDarkMode") private var isDarkMode = true
+    @AppStorage("isNotificationsEnabled") private var notificationsEnabled = true
+    
     @State private var showingDeleteAlert = false
     @State private var showingSignOutAlert = false
-
-    // Mail breaks on the simulator,
-    // but works on actual device
+    
+    //@State
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var isShowingMailView = false
     @State private var isShowingMailErrorAlert = false
     @State private var mailComposeResult: Result<MFMailComposeResult, Error>? = nil
@@ -57,14 +62,42 @@ struct SettingsView: View {
                 }
             }
             Section(header: Text("Legal")) {
-                // Displays Privacy Policy
                 NavigationLink(destination: PrivacyPolicyView()) {
                     Text("Privacy Policy")
                 }
-                
-                // Allows user to view project source code
                 Link("Source Code", destination: URL(string: Consts.SOURCE_CODE)!)
-                
+            }
+            Section(header: Text("Preferences")) {
+                Toggle(isOn: $isDarkMode) {
+                    Text("Dark Mode")
+                }
+                .onChange(of: isDarkMode) {
+                    if isDarkMode == true {
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                            for window in windowScene.windows {
+                                window.overrideUserInterfaceStyle = .dark
+                            }
+                        }
+                      } else {
+                          if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                              for window in windowScene.windows {
+                                  window.overrideUserInterfaceStyle = .light
+                              }
+                          }
+                      }
+                }
+
+                Toggle(isOn: $notificationsEnabled) {
+                    Text("Enable Notifications")
+                }
+                .onChange(of: notificationsEnabled) {
+                    if notificationsEnabled == true{
+                        enableNotifications()
+                    } else {
+                        disableNotifications()
+
+                    }
+                }
             }
             Section(header: Text("Support")) {
                 Button(action: {
@@ -89,9 +122,9 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+
     }
 
-    // Implement Firebase sign out
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -100,7 +133,6 @@ struct SettingsView: View {
         }
     }
 
-    // Implement account deletion
     func deleteAccount() {
         let user = Auth.auth().currentUser
         user?.delete { error in
@@ -111,9 +143,25 @@ struct SettingsView: View {
             }
         }
     }
+
+    func enableNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Notifications enabled")
+            } else {
+                print("Notifications not enabled: \(error?.localizedDescription ?? "unknown error")")
+            }
+        }
+    }
+
+    func disableNotifications() {
+        print("Notifications disabled")
+        // Implement any additional logic to handle disabling notifications
+    }
 }
 
-// Displays GitHub Privacy Policy in a WebView
+// Other structs remain unchanged
+
 struct PrivacyPolicyView: View {
     var body: some View {
         WebView(url: URL(string: "https://drewstephensdesigns.github.io/privacy-policy/amxs-family-zone")!)
@@ -121,7 +169,6 @@ struct PrivacyPolicyView: View {
     }
 }
 
-// User Feedback
 struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
