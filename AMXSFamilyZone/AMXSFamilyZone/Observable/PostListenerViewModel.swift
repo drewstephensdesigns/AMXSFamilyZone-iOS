@@ -34,7 +34,7 @@ class PostListenerViewModel: ObservableObject {
             for documentChange in snapshots.documentChanges {
                 if documentChange.type == .added {
                     let post = try? documentChange.document.data(as: Post.self)
-                    if let post = post, post.creatorID != self.currentUser?.uid {
+                    if let post = post, post.creatorId != self.currentUser?.uid {
                         if !self.notifiedPostIDs.contains(post.id ?? "") { // Check if the post ID is already notified
                             self.notifiedPostIDs.insert(post.id ?? "") // Add the post ID to the set
                             self.sendNewPostNotification(post: post)

@@ -13,41 +13,35 @@ struct ResourcesView: View {
     @ObservedObject var fetcher = Resource()
     @ObservedObject var featuredFetcher = Featured()
     
-    // Array of SF Icons, that match up with the resources.json file
-    // The more resources that get added, the more icons that are needed
-    // List defaults back to the top if no icon is added
     let imageNames = [
-        "exclamationmark.shield", 
+        "exclamationmark.shield",
         "staroflife",
         "phone",
         "link",
         "mail.and.text.magnifyingglass",
-        "iphone.homebutton", 
+        "iphone.homebutton",
         "figure.mind.and.body",
         "cross.circle.fill",
         "giftcard",
-        "heart.text.square", 
+        "heart.text.square",
         "pencil.and.list.clipboard",
         "bandage",
         "figure.jumprope",
-        "globe.americas", 
+        "globe.americas",
         "graduationcap",
         "checkmark.bubble",
         "person.bust",
-        "figure.mind.and.body", 
+        "figure.mind.and.body",
         "pencil.and.ruler",
         "figure.and.child.holdinghands",
-        "waveform.path.ecg.rectangle", 
+        "waveform.path.ecg.rectangle",
         "calendar",
         "link",
         "rectangle.inset.filled.and.person.filled",
-        "network", 
+        "network",
         "globe.desk"
     ]
     
-    // Array of colors for the CardView background
-    // If more items are added to data.json, the colors
-    // will automatically update to the next available
     let backgroundColors: [Color] = [
         .red, .green, .blue, .orange, .purple, .yellow, .pink, .teal
     ]
@@ -55,7 +49,7 @@ struct ResourcesView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
+                VStack(spacing: 16) {
                     TabView {
                         ForEach(featuredFetcher.featured.indices, id: \.self) { index in
                             let featuredItem = featuredFetcher.featured[index]
@@ -79,28 +73,42 @@ struct ResourcesView: View {
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                     .frame(height: 200)
+                  
                     
+                    // 317 AW Family Link
+                    Text("Join the 317th Airlift Wing Families Group (Facebook)")
+                        .font(.system(.caption).bold())
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            openFacebookLink("https://www.facebook.com/groups/317awfamilies/?ref=share&mibextid=NSMWBT", appId: "317awfamilies")
+                        }
+                       
+                    
+                    // Dyess Spouses Link
+                    Text("Join the Dyess Spouses Group (Facebook)")
+                        .font(.system(.caption).bold())
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            openFacebookLink("https://www.facebook.com/groups/259025040926614/?ref=share&mibextid=NSMWBT", appId: "259025040926614")
+                        }
+                       
+                    
+                    // Crisis Response Header
                     Text("* Orange text denotes crisis response resources")
                         .font(.system(.caption).bold())
                         .foregroundColor(.orange)
                         .padding(.top, 10)
                     
+                    // Builds Text Headers for the Resources
                     ForEach(fetcher.resources.indices, id: \.self) { index in
                         let item = fetcher.resources[index]
                         let imageName = imageNames[index % imageNames.count]
                         
                         HStack(alignment: .top) {
-                            if UIImage(systemName: imageName) != nil {
-                                Image(systemName: imageName)
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                    .padding(.trailing, 10)
-                            } else {
-                                Image(imageName)
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                    .padding(.trailing, 10)
-                            }
+                            Image(systemName: imageName)
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .padding(.trailing, 10)
                             
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(item.resourceName)
@@ -115,21 +123,32 @@ struct ResourcesView: View {
                             .onTapGesture {
                                 openLink(for: item, at: index)
                             }
-                            Spacer() // This will push everything to the left
+                            Spacer()
                         }
                         .padding(.vertical, 6)
+                        .padding(.horizontal)
                     }
                 }
                 .padding(.horizontal)
             }
             .navigationTitle("Resources")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func openLink(for item: ResourceItem, at index: Int) {
         let urlString = index == 5 ? "https://apps.apple.com/us/app/usaf-connect/id1403806821" : item.resourceLink
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    private func openFacebookLink(_ link: String, appId: String) {
+        let fbAppUrl = "fb://group/\(appId)"
+        if let fbUrl = URL(string: fbAppUrl), UIApplication.shared.canOpenURL(fbUrl) {
+            UIApplication.shared.open(fbUrl, options: [:], completionHandler: nil)
+        } else if let webUrl = URL(string: link) {
+            UIApplication.shared.open(webUrl, options: [:], completionHandler: nil)
         }
     }
     

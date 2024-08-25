@@ -23,21 +23,25 @@ struct ContentView: View {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
+                    .tag(Tab.home)
                 
                 AddPostView()
                     .tabItem {
                         Label("Add Post", systemImage: "square.and.pencil")
                     }
+                    .tag(Tab.addPost)
                 
                 ResourcesView()
                     .tabItem {
                         Label("Resources", systemImage: "globe")
                     }
+                    .tag(Tab.quickLinks)
                 
                 ProfileView()
                     .tabItem {
                         Label("Profile", systemImage: "person.circle")
                     }
+                    .tag(Tab.profile)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

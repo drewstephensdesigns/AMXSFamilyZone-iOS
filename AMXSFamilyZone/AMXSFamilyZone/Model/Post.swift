@@ -13,17 +13,17 @@ struct Post: Codable, Identifiable {
     var text: String
     var imageUrl: String?
     var user: User? // Change to optional type User?
-    var creatorID: String?
+    var creatorId: String?
     var time: Double
 
 
     // Update the initializer accordingly
-    init(id: String? = nil, text: String = "", imageUrl: String? = nil, user: User? = nil, creatorID: String, time: Double) {
+    init(id: String? = nil, text: String = "", imageUrl: String? = nil, user: User? = nil, creatorId: String, time: Double) {
         self.id = id
         self.text = text
         self.imageUrl = imageUrl
         self.user = user
-        self.creatorID = creatorID
+        self.creatorId = creatorId
         self.time = time * 1000
     }
 
@@ -33,7 +33,7 @@ struct Post: Codable, Identifiable {
             "text": text,
             "imageUrl": imageUrl as Any,
             "user": user?.dictionary as Any, // Ensure user is unwrapped
-            "creatorID" : creatorID as Any,
+            "creatorId" : creatorId as Any,
             "time": time,
         ]
     }

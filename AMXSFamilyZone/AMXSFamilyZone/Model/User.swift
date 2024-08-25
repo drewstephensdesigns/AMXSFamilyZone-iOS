@@ -12,16 +12,18 @@ struct User: Codable, Identifiable {
     var name: String?
     var email: String
     var following: [String]?
+    var followers: [String]?
     var bio: String?
     var imageUrl: String?
     var link: String?
     var accountCreated: Double
 
-    init(id: String = "", name: String, email: String, following: [String] = [], bio: String = "", imageUrl: String = "", link: String = "", accountCreated:Double) {
+    init(id: String = "", name: String, email: String, following: [String] = [], followers: [String] = [], bio: String = "", imageUrl: String = "", link: String = "", accountCreated: Double) {
         self.id = id
         self.name = name
         self.email = email
         self.following = following
+        self.followers = followers
         self.bio = bio
         self.imageUrl = imageUrl
         self.link = link
@@ -34,6 +36,7 @@ struct User: Codable, Identifiable {
             "name": name,
             "email": email,
             "following": following,
+            "followers": followers,
             "bio": bio,
             "imageUrl": imageUrl,
             "link": link,
@@ -41,19 +44,22 @@ struct User: Codable, Identifiable {
         ]
     }
     
-        // Function to convert Unix timestamp to a readable date string
-        func getTimeStamp() -> String {
-           // print("Raw timestamp from Firebase: \(time)")
-           // print("Text from Firebase:  \(text)")
-            
-            // Convert milliseconds to seconds
-            let date = Date(timeIntervalSince1970: accountCreated / 1000)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
-            let dateString = dateFormatter.string(from: date)
-            
-           // print("Converted date string: \(dateString)")
-            
-            return dateString
-        }
+    // Function to convert Unix timestamp to a readable date string
+    func getTimeStamp() -> String {
+        let date = Date(timeIntervalSince1970: accountCreated / 1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    // Function to get the count of followers
+    func getFollowersCount() -> Int {
+        return followers?.count ?? 0
+    }
+
+    // Function to get the count of following
+    func getFollowingCount() -> Int {
+        return following?.count ?? 0
+    }
 }
