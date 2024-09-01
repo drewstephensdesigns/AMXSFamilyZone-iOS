@@ -102,3 +102,4 @@ This project uses the following libraries and plug-ins:
 * [Markdown Guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 * [Swift Package Dependencies stopped working](https://stackoverflow.com/questions/69281786/local-swift-packages-stopped-working-in-xcode-13)
 * [Preparing you app for review - Google Play](https://support.google.com/googleplay/android-developer/answer/9859455?#app_access)
+* [SwiftUI Font and Text - Typography and fonts play a fundamental role in UI/UX design](https://www.swiftyplace.com/blog/swiftui-font-and-texts)
