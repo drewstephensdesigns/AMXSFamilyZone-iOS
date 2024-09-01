@@ -71,20 +71,9 @@ struct SettingsView: View {
                 Toggle(isOn: $isDarkMode) {
                     Text("Dark Mode")
                 }
-                .onChange(of: isDarkMode) {
-                    if isDarkMode == true {
-                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                            for window in windowScene.windows {
-                                window.overrideUserInterfaceStyle = .dark
-                            }
-                        }
-                      } else {
-                          if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                              for window in windowScene.windows {
-                                  window.overrideUserInterfaceStyle = .light
-                              }
-                          }
-                      }
+                .onChange(of: isDarkMode) { oldValue, newValue in
+                    print("Dark Mode changed from \(oldValue) to \(newValue)")
+                    setInterfaceStyle(newValue ? .dark : .light)
                 }
 
                 Toggle(isOn: $notificationsEnabled) {
@@ -123,6 +112,14 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
 
+    }
+    
+    func setInterfaceStyle(_ style: UIUserInterfaceStyle) {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            for window in windowScene.windows {
+                window.overrideUserInterfaceStyle = style
+            }
+        }
     }
 
     func signOut() {

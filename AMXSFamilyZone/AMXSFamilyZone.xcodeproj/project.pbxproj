@@ -16,7 +16,6 @@
 		5A1A7F842C2F4871006B9290 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F832C2F4871006B9290 /* ProfileView.swift */; };
 		5A1A7F862C2F48CC006B9290 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F852C2F48CC006B9290 /* PostView.swift */; };
 		5A1A7F882C2F4900006B9290 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1A7F872C2F4900006B9290 /* EditProfileView.swift */; };
-		5A1A7F8A2C2F49B8006B9290 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A1A7F892C2F49B8006B9290 /* GoogleService-Info.plist */; };
 		5A20651E2C2DC1E600704007 /* AMXSFamilyZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20651D2C2DC1E600704007 /* AMXSFamilyZoneApp.swift */; };
 		5A2065202C2DC1E600704007 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20651F2C2DC1E600704007 /* ContentView.swift */; };
 		5A2065222C2DC1E700704007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065212C2DC1E700704007 /* Assets.xcassets */; };
@@ -38,11 +37,21 @@
 		5A2065512C2DC48E00704007 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5A2065502C2DC48E00704007 /* FirebaseFirestoreSwift */; };
 		5A2065532C2DC48E00704007 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5A2065522C2DC48E00704007 /* FirebaseStorage */; };
 		5A2065562C2DC4B100704007 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5A2065552C2DC4B100704007 /* SDWebImageSwiftUI */; };
-		5A2065752C2DDEF000704007 /* amxs-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065742C2DDEF000704007 /* amxs-hd.png */; };
 		5A20657A2C2DDF0800704007 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065762C2DDF0800704007 /* 03.png */; };
 		5A20657B2C2DDF0800704007 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065772C2DDF0800704007 /* 04.png */; };
 		5A20657C2C2DDF0800704007 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065782C2DDF0800704007 /* 01.png */; };
 		5A20657D2C2DDF0800704007 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065792C2DDF0800704007 /* 02.png */; };
+		5A20D6FB2C817B3200C03AC1 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D6FA2C817B3200C03AC1 /* PostImageView.swift */; };
+		5A20D6FD2C817B4D00C03AC1 /* PostTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D6FC2C817B4D00C03AC1 /* PostTextView.swift */; };
+		5AC264202C828D9700E0072C /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2641F2C828D9700E0072C /* ProfileImageView.swift */; };
+		5AC264282C83BA5600E0072C /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC264272C83BA5600E0072C /* TrendingViewModel.swift */; };
+		5AC2642A2C83BAA400E0072C /* TrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC264292C83BAA400E0072C /* TrendingView.swift */; };
+		5AC2642C2C83C11600E0072C /* TrendingPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2642B2C83C11600E0072C /* TrendingPostView.swift */; };
+		5AC2642E2C84362800E0072C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AC2642D2C84362800E0072C /* GoogleService-Info.plist */; };
+		5AEE22322C446F6800B4FEF8 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE22312C446F6800B4FEF8 /* UserProfileView.swift */; };
+		5AFF42852C2FBB42006A3CD9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF42842C2FBB42006A3CD9 /* SettingsView.swift */; };
+		5AFF42872C2FBC1E006A3CD9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF42862C2FBC1E006A3CD9 /* WebView.swift */; };
+		5AFF42892C2FBD0B006A3CD9 /* amxs-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF42882C2FBD0B006A3CD9 /* amxs-hd.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,10 +62,8 @@
 		5A1A7F7F2C2F485C006B9290 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		5A1A7F812C2F4865006B9290 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		5A1A7F832C2F4871006B9290 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		5A1A7F852C2F48CC006B9290 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		5A1A7F852C2F48CC006B9290 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5A1A7F872C2F4900006B9290 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		5A1A7F892C2F49B8006B9290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/AMXSFamilyZone/AMXSFamilyZone/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5A1A7F8B2C2F49BC006B9290 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A20651A2C2DC1E600704007 /* AMXSFamilyZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMXSFamilyZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A20651D2C2DC1E600704007 /* AMXSFamilyZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMXSFamilyZoneApp.swift; sourceTree = "<group>"; };
 		5A20651F2C2DC1E600704007 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,11 +81,21 @@
 		5A2065432C2DC41C00704007 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5A2065442C2DC41C00704007 /* ResourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceItem.swift; sourceTree = "<group>"; };
 		5A2065452C2DC41C00704007 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5A2065742C2DDEF000704007 /* amxs-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "amxs-hd.png"; path = "../../../../Downloads/amxs-hd.png"; sourceTree = "<group>"; };
 		5A2065762C2DDF0800704007 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 03.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/03.png"; sourceTree = "<group>"; };
 		5A2065772C2DDF0800704007 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 04.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/04.png"; sourceTree = "<group>"; };
 		5A2065782C2DDF0800704007 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 01.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/01.png"; sourceTree = "<group>"; };
 		5A2065792C2DDF0800704007 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 02.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/02.png"; sourceTree = "<group>"; };
+		5A20D6FA2C817B3200C03AC1 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
+		5A20D6FC2C817B4D00C03AC1 /* PostTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextView.swift; sourceTree = "<group>"; };
+		5AC2641F2C828D9700E0072C /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		5AC264272C83BA5600E0072C /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
+		5AC264292C83BAA400E0072C /* TrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingView.swift; sourceTree = "<group>"; };
+		5AC2642B2C83C11600E0072C /* TrendingPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPostView.swift; sourceTree = "<group>"; };
+		5AC2642D2C84362800E0072C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5AEE22312C446F6800B4FEF8 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		5AFF42842C2FBB42006A3CD9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5AFF42862C2FBC1E006A3CD9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		5AFF42882C2FBD0B006A3CD9 /* amxs-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amxs-hd.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +131,8 @@
 				5A1A7F7F2C2F485C006B9290 /* AddPostView.swift */,
 				5A1A7F812C2F4865006B9290 /* ResourcesView.swift */,
 				5A1A7F832C2F4871006B9290 /* ProfileView.swift */,
+				5AEE22312C446F6800B4FEF8 /* UserProfileView.swift */,
+				5AC264292C83BAA400E0072C /* TrendingView.swift */,
 			);
 			path = NavView;
 			sourceTree = "<group>";
@@ -133,6 +152,9 @@
 			children = (
 				5A1A7F852C2F48CC006B9290 /* PostView.swift */,
 				5A1A7F872C2F4900006B9290 /* EditProfileView.swift */,
+				5AFF42842C2FBB42006A3CD9 /* SettingsView.swift */,
+				5AFF42862C2FBC1E006A3CD9 /* WebView.swift */,
+				5AC2642B2C83C11600E0072C /* TrendingPostView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -140,7 +162,7 @@
 		5A2065112C2DC1E600704007 = {
 			isa = PBXGroup;
 			children = (
-				5A1A7F892C2F49B8006B9290 /* GoogleService-Info.plist */,
+				5AC2642D2C84362800E0072C /* GoogleService-Info.plist */,
 				5A2065732C2DDED700704007 /* screenshots */,
 				5A20651C2C2DC1E600704007 /* AMXSFamilyZone */,
 				5A20651B2C2DC1E600704007 /* Products */,
@@ -158,7 +180,6 @@
 		5A20651C2C2DC1E600704007 /* AMXSFamilyZone */ = {
 			isa = PBXGroup;
 			children = (
-				5A1A7F8B2C2F49BC006B9290 /* GoogleService-Info.plist */,
 				5A1A7F732C2F471E006B9290 /* Screens */,
 				5A2065462C2DC41C00704007 /* Model */,
 				5A20653C2C2DC40100704007 /* Observable */,
@@ -185,6 +206,9 @@
 				5A2065312C2DC3E400704007 /* AuthManager.swift */,
 				5A2065322C2DC3E400704007 /* Consts.swift */,
 				5A2065332C2DC3E400704007 /* ImagePicker.swift */,
+				5A20D6FA2C817B3200C03AC1 /* PostImageView.swift */,
+				5A20D6FC2C817B4D00C03AC1 /* PostTextView.swift */,
+				5AC2641F2C828D9700E0072C /* ProfileImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -197,6 +221,7 @@
 				5A2065392C2DC40100704007 /* PostListenerViewModel.swift */,
 				5A20653A2C2DC40100704007 /* Resource.swift */,
 				5A20653B2C2DC40100704007 /* UserUtil.swift */,
+				5AC264272C83BA5600E0072C /* TrendingViewModel.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -215,11 +240,11 @@
 		5A2065732C2DDED700704007 /* screenshots */ = {
 			isa = PBXGroup;
 			children = (
+				5AFF42882C2FBD0B006A3CD9 /* amxs-hd.png */,
 				5A2065782C2DDF0800704007 /* 01.png */,
 				5A2065792C2DDF0800704007 /* 02.png */,
 				5A2065762C2DDF0800704007 /* 03.png */,
 				5A2065772C2DDF0800704007 /* 04.png */,
-				5A2065742C2DDEF000704007 /* amxs-hd.png */,
 			);
 			name = screenshots;
 			path = ../screenshots;
@@ -279,6 +304,8 @@
 			packageReferences = (
 				5A20654B2C2DC48E00704007 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5A2065542C2DC4B100704007 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				5AFF428A2C30D9D5006A3CD9 /* XCRemoteSwiftPackageReference "AlertToast" */,
+				5AFF428D2C30F74A006A3CD9 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 5A20651B2C2DC1E600704007 /* Products */;
 			projectDirPath = "";
@@ -294,9 +321,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFF42892C2FBD0B006A3CD9 /* amxs-hd.png in Resources */,
 				5A20657A2C2DDF0800704007 /* 03.png in Resources */,
-				5A1A7F8A2C2F49B8006B9290 /* GoogleService-Info.plist in Resources */,
-				5A2065752C2DDEF000704007 /* amxs-hd.png in Resources */,
+				5AC2642E2C84362800E0072C /* GoogleService-Info.plist in Resources */,
 				5A2065252C2DC1E800704007 /* Preview Assets.xcassets in Resources */,
 				5A20657D2C2DDF0800704007 /* 02.png in Resources */,
 				5A20657B2C2DDF0800704007 /* 04.png in Resources */,
@@ -313,15 +340,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2065402C2DC40200704007 /* Resource.swift in Sources */,
+				5A20D6FB2C817B3200C03AC1 /* PostImageView.swift in Sources */,
 				5A2065202C2DC1E600704007 /* ContentView.swift in Sources */,
 				5A2065352C2DC3E400704007 /* Consts.swift in Sources */,
 				5A2065482C2DC41C00704007 /* Post.swift in Sources */,
 				5A1A7F822C2F4865006B9290 /* ResourcesView.swift in Sources */,
+				5AEE22322C446F6800B4FEF8 /* UserProfileView.swift in Sources */,
+				5AC264282C83BA5600E0072C /* TrendingViewModel.swift in Sources */,
+				5A20D6FD2C817B4D00C03AC1 /* PostTextView.swift in Sources */,
 				5A1A7F802C2F485C006B9290 /* AddPostView.swift in Sources */,
 				5A2065362C2DC3E400704007 /* ImagePicker.swift in Sources */,
 				5A20653D2C2DC40100704007 /* Featured.swift in Sources */,
 				5A20654A2C2DC41C00704007 /* User.swift in Sources */,
+				5AC2642C2C83C11600E0072C /* TrendingPostView.swift in Sources */,
+				5AFF42852C2FBB42006A3CD9 /* SettingsView.swift in Sources */,
 				5A20653E2C2DC40200704007 /* HomeFeed.swift in Sources */,
+				5AFF42872C2FBC1E006A3CD9 /* WebView.swift in Sources */,
 				5A1A7F862C2F48CC006B9290 /* PostView.swift in Sources */,
 				5A1A7F7C2C2F4807006B9290 /* RegisterView.swift in Sources */,
 				5A1A7F7E2C2F4853006B9290 /* HomeView.swift in Sources */,
@@ -329,12 +363,14 @@
 				5A2065342C2DC3E400704007 /* AuthManager.swift in Sources */,
 				5A20653F2C2DC40200704007 /* PostListenerViewModel.swift in Sources */,
 				5A2065412C2DC40200704007 /* UserUtil.swift in Sources */,
+				5AC264202C828D9700E0072C /* ProfileImageView.swift in Sources */,
 				5A2065492C2DC41C00704007 /* ResourceItem.swift in Sources */,
 				5A1A7F882C2F4900006B9290 /* EditProfileView.swift in Sources */,
 				5A20651E2C2DC1E600704007 /* AMXSFamilyZoneApp.swift in Sources */,
 				5A1A7F7A2C2F47E0006B9290 /* LoginView.swift in Sources */,
 				5A1A7F842C2F4871006B9290 /* ProfileView.swift in Sources */,
 				5A1A7F782C2F47BA006B9290 /* ForgotPasswordView.swift in Sources */,
+				5AC2642A2C83BAA400E0072C /* TrendingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,8 +504,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AMXSFamilyZone/Preview Content\"";
+				DEVELOPMENT_TEAM = HNHVJR9548;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -496,8 +534,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AMXSFamilyZone/Preview Content\"";
+				DEVELOPMENT_TEAM = HNHVJR9548;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -554,6 +594,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.1.0;
+			};
+		};
+		5AFF428A2C30D9D5006A3CD9 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
+		5AFF428D2C30F74A006A3CD9 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

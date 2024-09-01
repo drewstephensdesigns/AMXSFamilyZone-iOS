@@ -25,8 +25,9 @@ struct AddPostView: View {
         NavigationStack {
             VStack {
                 Text("Please Remember OPSEC When Posting")
-                    .font(.headline)
-                    .bold()
+                    //.font(.headline)
+                    .font(.system(.headline, design: .rounded))
+                    .fontWeight(.medium)
                     .padding(.top, 16)
                     .padding(.bottom, 8)
                 Spacer()
@@ -63,8 +64,9 @@ struct AddPostView: View {
 
                 Spacer()
                 Text("What's on Your Mind? \n Post a Picture, Text, or Both")
-                    .font(.subheadline)
-                    .bold()
+                    //.font(.subheadline)
+                    .font(.system(.subheadline, design: .rounded))
+                    .fontWeight(.medium)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 16)
 

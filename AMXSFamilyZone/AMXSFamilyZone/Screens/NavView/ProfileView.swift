@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 struct ProfileView: View {
-    @State var contentMode = ContentMode.fit
+   
     @State private var name: String = ""
     @State private var bio: String = ""
     @State private var website: String = ""
@@ -25,7 +25,9 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                
                 VStack {
+                    
                     HStack {
                         let imageUrl = profileImageUrl.isEmpty ? Consts.DEFAULT_USER_IMAGE : profileImageUrl
                         if let url = URL(string: imageUrl) {
@@ -86,66 +88,76 @@ struct ProfileView: View {
                     
                     VStack(alignment: .leading) {
                         Text(self.name)
-                            .font(.title)
-                            .bold()
-                            .padding(.horizontal, 8)
+                            .font(.custom("Futura", size: 16))
+                            .padding(.top, 6)
+                            .padding(.horizontal, 10)
+                        
                         Text(self.bio)
-                            .font(.body)
+                            .font(.system(.callout, design: .rounded))
                             .padding(.horizontal, 8)
                             .padding(.top, 6)
                             .lineLimit(4)
                         
                         if !self.website.isEmpty {
                             Text(self.website)
-                                .font(.callout)
+                                .font(.footnote)
                                 .textCase(.lowercase)
                                 .foregroundColor(.blue)
                                 .padding(.horizontal, 8)
                                 .padding(.top, 6)
                                 .onTapGesture {
-                                    if let url = URL(string: website) {
-                                        UIApplication.shared.open(url)
+                                    if let encodedUrl = self.website.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                                       let url = URL(string: encodedUrl) {
+                                        UIApplication.shared.open(url, options: [:]) { success in
+                                            if !success {
+                                                print("Failed to open URL: \(self.website)")
+                                            }
+                                        }
+                                    } else {
+                                        print("Invalid URL: \(self.website)")
                                     }
                                 }
                         }
                         Divider()
-                            .background(Color.blue)
+                            .background(Color.secondary)
                             .padding(.top, 5)
                     }
                     .padding(.horizontal, 10)
                     
                         // Grid of posts
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                        ForEach(posts, id: \.self) { postUrl in
-                            if let url = URL(string: postUrl) {
-                                AsyncImage(url: url) { image in
-                                    image.resizable()
-                                        //.aspectRatio(contentMode: .fill)
-                                        .aspectRatio(contentMode: contentMode)
-                                        .frame(width: 150, height: 150)
-                                        .clipped()
-                                        .onTapGesture {
-                                            selectedImageUrl = postUrl
-                                           // isImagePresented = true
-                                            print("Fetched image URL: \(selectedImageUrl ?? "No URL")")
-                                        }
-                                } placeholder: {
-                                    Color.gray
-                                        .frame(width: 100, height: 100)
+                        LazyVGrid(
+                            columns: [
+                                GridItem(.flexible(), spacing: 8),
+                                GridItem(.flexible(), spacing: 8),
+                                GridItem(.flexible(), spacing: 8)
+                            ],
+                            spacing: 8 // Adjust spacing between rows
+                        ) {
+                            ForEach(posts, id: \.self) { postUrl in
+                                if let url = URL(string: postUrl) {
+                                    AsyncImage(url: url) { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 150, height: 150)
+                                            .clipped()
+                                            //.onTapGesture {
+                                            //    selectedImageUrl = postUrl
+                                            //    print("Fetched image URL: \(selectedImageUrl ?? "No URL")")
+                                           // }
+                                    } placeholder: {
+                                        Color.gray
+                                            .frame(width: 100, height: 100)
+                                    }
                                 }
                             }
                         }
-                    }
-                    .padding(.horizontal, 10)
+                        .padding(.horizontal, 5) // Reduce padding to bring items closer to the edges
                 }
             }
             .navigationTitle("Profile")
             .onAppear {
                 fetchData()
             }
-            //.sheet(isPresented: $isImagePresented) {
-            //    ImageViewer(imageUrl: selectedImageUrl)
-           // }
         }
         .navigationViewStyle(StackNavigationViewStyle()) // Add this line
     }
@@ -188,6 +200,8 @@ struct ProfileView: View {
 struct ImageViewer: View {
     var imageUrl: String?
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack {
             Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
@@ -206,7 +220,8 @@ struct ImageViewer: View {
             VStack {
                 Spacer()
                 Button(action: {
-                    UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+                        //UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+                    dismiss()
                 }) {
                     Text("Close")
                         .foregroundColor(.white)

@@ -38,7 +38,6 @@ class HomeFeed: ObservableObject {
                 self.posts = documents.compactMap { queryDocumentSnapshot in
                     return try? queryDocumentSnapshot.data(as: Post.self)
                 }
-                
         }
     }
 }

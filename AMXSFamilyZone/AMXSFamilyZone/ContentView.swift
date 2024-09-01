@@ -13,7 +13,7 @@ struct ContentView: View {
     @StateObject private var viewModel = PostListenerViewModel()
     
     enum Tab {
-        case home, addPost, quickLinks, profile
+        case home, trending, addPost, quickLinks, profile
     }
     
     var body: some View {
@@ -24,6 +24,12 @@ struct ContentView: View {
                         Label("Home", systemImage: "house")
                     }
                     .tag(Tab.home)
+                
+                TrendingView()
+                    .tabItem {
+                        Label("Trending", systemImage: "magnifyingglass")
+                    }
+                    .tag(Tab.trending)
                 
                 AddPostView()
                     .tabItem {
@@ -57,6 +63,8 @@ struct ContentView: View {
         switch tab {
             case .home:
                 return "Home"
+            case .trending:
+                return "Trending"
             case .addPost:
                 return "Add Post"
             case .quickLinks:

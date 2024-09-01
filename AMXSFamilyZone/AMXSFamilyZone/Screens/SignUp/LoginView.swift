@@ -64,7 +64,6 @@ struct LoginView: View {
 
                 // Navigation to ContentView
                 NavigationLink("", destination: ContentView(), isActive: $navigatedToContent)
-                    .hidden()
             }
             .padding()
         }
