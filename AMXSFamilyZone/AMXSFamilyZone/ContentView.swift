@@ -10,7 +10,7 @@ import Firebase
 
 struct ContentView: View {
     @State private var selectedTab: Tab = .home
-    @StateObject private var viewModel = PostListenerViewModel()
+    @ObservedObject var postListener = PostListenerViewModel()
     
     enum Tab {
         case home, trending, addPost, quickLinks, profile
@@ -57,6 +57,7 @@ struct ContentView: View {
                 }
             }
         }
+
     }
     
     func getTitle(for tab: Tab) -> String {

@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct Post: Codable, Identifiable {
     @DocumentID var id: String?
     var text: String
+    var link: String?
     var imageUrl: String?
     var user: User? // Change to optional type User?
     var creatorId: String?
@@ -18,9 +19,10 @@ struct Post: Codable, Identifiable {
 
 
     // Update the initializer accordingly
-    init(id: String? = nil, text: String = "", imageUrl: String? = nil, user: User? = nil, creatorId: String, time: Double) {
+    init(id: String? = nil, text: String = "", link: String? = nil, imageUrl: String? = nil, user: User? = nil, creatorId: String, time: Double) {
         self.id = id
         self.text = text
+        self.link = link
         self.imageUrl = imageUrl
         self.user = user
         self.creatorId = creatorId
@@ -31,6 +33,7 @@ struct Post: Codable, Identifiable {
         return [
             "id": id as Any,
             "text": text,
+            "link": link as Any,
             "imageUrl": imageUrl as Any,
             "user": user?.dictionary as Any, // Ensure user is unwrapped
             "creatorId" : creatorId as Any,

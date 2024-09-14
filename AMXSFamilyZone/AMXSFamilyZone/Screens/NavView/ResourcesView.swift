@@ -159,11 +159,18 @@ struct ResourcesView: View {
     }
 }
 
-struct ResourcesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResourcesView()
-            .preferredColorScheme(.light)
-        ResourcesView()
-            .preferredColorScheme(.dark)
-    }
+
+#Preview {
+    ResourcesView()
 }
+
+/*
+ struct ResourcesView_Previews: PreviewProvider {
+ static var previews: some View {
+ ResourcesView()
+ .preferredColorScheme(.light)
+ ResourcesView()
+ .preferredColorScheme(.dark)
+ }
+ }
+ */

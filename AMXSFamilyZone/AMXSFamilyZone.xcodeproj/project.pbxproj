@@ -43,6 +43,8 @@
 		5A20657D2C2DDF0800704007 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A2065792C2DDF0800704007 /* 02.png */; };
 		5A20D6FB2C817B3200C03AC1 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D6FA2C817B3200C03AC1 /* PostImageView.swift */; };
 		5A20D6FD2C817B4D00C03AC1 /* PostTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D6FC2C817B4D00C03AC1 /* PostTextView.swift */; };
+		5A25489B2C8EA0DA00419527 /* CameraImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A25489A2C8EA0DA00419527 /* CameraImagePicker.swift */; };
+		5A2548A02C93A87800419527 /* LinkPreview in Frameworks */ = {isa = PBXBuildFile; productRef = 5A25489F2C93A87800419527 /* LinkPreview */; };
 		5AC264202C828D9700E0072C /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2641F2C828D9700E0072C /* ProfileImageView.swift */; };
 		5AC264282C83BA5600E0072C /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC264272C83BA5600E0072C /* TrendingViewModel.swift */; };
 		5AC2642A2C83BAA400E0072C /* TrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC264292C83BAA400E0072C /* TrendingView.swift */; };
@@ -87,6 +89,7 @@
 		5A2065792C2DDF0800704007 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 02.png; path = "../../../../Downloads/AppScreens-Free-Bright-Multi-C-1719189650874/apple/iOS Phones - 6.7/02.png"; sourceTree = "<group>"; };
 		5A20D6FA2C817B3200C03AC1 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		5A20D6FC2C817B4D00C03AC1 /* PostTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextView.swift; sourceTree = "<group>"; };
+		5A25489A2C8EA0DA00419527 /* CameraImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImagePicker.swift; sourceTree = "<group>"; };
 		5AC2641F2C828D9700E0072C /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		5AC264272C83BA5600E0072C /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		5AC264292C83BAA400E0072C /* TrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingView.swift; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 				5A2065562C2DC4B100704007 /* SDWebImageSwiftUI in Frameworks */,
 				5A20654F2C2DC48E00704007 /* FirebaseDatabaseSwift in Frameworks */,
 				5A2065532C2DC48E00704007 /* FirebaseStorage in Frameworks */,
+				5A2548A02C93A87800419527 /* LinkPreview in Frameworks */,
 				5A20654D2C2DC48E00704007 /* FirebaseAuth in Frameworks */,
 				5A2065512C2DC48E00704007 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -209,6 +213,7 @@
 				5A20D6FA2C817B3200C03AC1 /* PostImageView.swift */,
 				5A20D6FC2C817B4D00C03AC1 /* PostTextView.swift */,
 				5AC2641F2C828D9700E0072C /* ProfileImageView.swift */,
+				5A25489A2C8EA0DA00419527 /* CameraImagePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				5A2065502C2DC48E00704007 /* FirebaseFirestoreSwift */,
 				5A2065522C2DC48E00704007 /* FirebaseStorage */,
 				5A2065552C2DC4B100704007 /* SDWebImageSwiftUI */,
+				5A25489F2C93A87800419527 /* LinkPreview */,
 			);
 			productName = AMXSFamilyZone;
 			productReference = 5A20651A2C2DC1E600704007 /* AMXSFamilyZone.app */;
@@ -306,6 +312,7 @@
 				5A2065542C2DC4B100704007 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				5AFF428A2C30D9D5006A3CD9 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				5AFF428D2C30F74A006A3CD9 /* XCRemoteSwiftPackageReference "PopupView" */,
+				5A25489E2C93A87800419527 /* XCRemoteSwiftPackageReference "LinkPreview" */,
 			);
 			productRefGroup = 5A20651B2C2DC1E600704007 /* Products */;
 			projectDirPath = "";
@@ -344,6 +351,7 @@
 				5A2065202C2DC1E600704007 /* ContentView.swift in Sources */,
 				5A2065352C2DC3E400704007 /* Consts.swift in Sources */,
 				5A2065482C2DC41C00704007 /* Post.swift in Sources */,
+				5A25489B2C8EA0DA00419527 /* CameraImagePicker.swift in Sources */,
 				5A1A7F822C2F4865006B9290 /* ResourcesView.swift in Sources */,
 				5AEE22322C446F6800B4FEF8 /* UserProfileView.swift in Sources */,
 				5AC264282C83BA5600E0072C /* TrendingViewModel.swift in Sources */,
@@ -596,6 +604,14 @@
 				minimumVersion = 3.1.0;
 			};
 		};
+		5A25489E2C93A87800419527 /* XCRemoteSwiftPackageReference "LinkPreview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NuPlay/LinkPreview";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		5AFF428A2C30D9D5006A3CD9 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -639,6 +655,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A2065542C2DC4B100704007 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		5A25489F2C93A87800419527 /* LinkPreview */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A25489E2C93A87800419527 /* XCRemoteSwiftPackageReference "LinkPreview" */;
+			productName = LinkPreview;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

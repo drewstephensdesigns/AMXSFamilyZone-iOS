@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import LinkPreview
 
 struct PostView: View {
     var post: Post
@@ -27,7 +28,14 @@ struct PostView: View {
                 PostImageView(imageUrl: post.imageUrl)
                 
                 // Post Text
-                PostTextView(text: post.text, color: .primary, textSize: 15)
+                PostTextView(text: post.text, color: .primary, textSize: 15).padding(.top, 5)
+                
+                // If post contains a link, uses LinkPreview to show/handle URL
+                // source: https://github.com/NuPlay/LinkPreview
+                if let postLink = post.link, !postLink.isEmpty {
+                    LinkPreview(url: URL(string: postLink))
+                }
+                
                 
                 // Post Author - Using ZStack to keep text aligned correctly
                 if let author = post.user?.name {
@@ -42,6 +50,7 @@ struct PostView: View {
                         }
                     }
                 }
+                
                 
                 // Post Timestamp
                 PostTextView(text: post.getTimeStamp(), color: .secondary, textSize: 11)

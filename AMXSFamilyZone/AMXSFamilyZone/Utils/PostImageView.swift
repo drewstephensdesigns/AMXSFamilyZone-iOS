@@ -13,11 +13,15 @@ struct PostImageView: View {
         if let imageUrl = imageUrl, !imageUrl.isEmpty {
             WebImage(url: URL(string: imageUrl))
                 .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity, maxHeight: 250, alignment: .center)
+                .scaledToFit()
+                //.frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
                 .cornerRadius(14)
                 .padding(.top, 8)
                 .padding(.horizontal, 8)
         }
     }
+}
+
+#Preview {
+    PostImageView(imageUrl: "https://picsum.photos/250")
 }

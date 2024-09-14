@@ -19,12 +19,11 @@ class PostListenerViewModel: ObservableObject {
     private var notifiedPostIDs = Set<String>() // Add this property to track notified posts
 
     init() {
-        postsCollection = firestore.collection("Post") // Replace with your collection name
-        setupPostListener()
-        requestNotificationPermissions()
+        postsCollection = firestore.collection(Consts.POST_NODE) // Replace with your collection name
+        //setupPostListener()
     }
 
-    private func setupPostListener() {
+     func setupPostListener() {
         postListenerRegistration = postsCollection.addSnapshotListener { [weak self] (snapshots, error) in
             guard let self = self, let snapshots = snapshots else {
                 print("Listen failed: \(error?.localizedDescription ?? "unknown error")")
@@ -33,33 +32,29 @@ class PostListenerViewModel: ObservableObject {
 
             for documentChange in snapshots.documentChanges {
                 if documentChange.type == .added {
-                    let post = try? documentChange.document.data(as: Post.self)
-                    if let post = post, post.creatorId != self.currentUser?.uid {
-                        if !self.notifiedPostIDs.contains(post.id ?? "") { // Check if the post ID is already notified
-                            self.notifiedPostIDs.insert(post.id ?? "") // Add the post ID to the set
+                    if let post = try? documentChange.document.data(as: Post.self) {
+                        // Check if the post's ID is already in notifiedPostIDs
+                        if let postId = post.id, !self.notifiedPostIDs.contains(postId) {
+                            // Add post ID to set to prevent duplicate notifications
+                            self.notifiedPostIDs.insert(postId)
+                            
+                            // Send notification for new post
                             self.sendNewPostNotification(post: post)
+                        } else {
+                            // Avoid duplicate notification by skipping already notified posts
+                            print("Post with ID \(post.id ?? "unknown") already notified.")
                         }
+                    } else {
+                        print("Error decoding post")
                     }
                 }
             }
         }
     }
 
-    private func requestNotificationPermissions() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if let error = error {
-                print("Failed to request notification permissions: \(error.localizedDescription)")
-            } else if !granted {
-                print("Notification permission not granted.")
-            } else {
-                print("Notification permission granted.")
-            }
-        }
-    }
-
     private func sendNewPostNotification(post: Post) {
         let content = UNMutableNotificationContent()
-        content.title = "New Post by \(post.user?.email ?? "Unknown User")"
+        content.title = "New Post by \(post.user?.name ?? "Unknown User")"
         content.body = post.text
         content.sound = .default
 
@@ -68,7 +63,7 @@ class PostListenerViewModel: ObservableObject {
             content: content,
             trigger: nil
         )
-
+        
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("Failed to schedule notification: \(error.localizedDescription)")
@@ -76,6 +71,7 @@ class PostListenerViewModel: ObservableObject {
                 print("Notification scheduled successfully.")
             }
         }
+        
     }
 
     deinit {
