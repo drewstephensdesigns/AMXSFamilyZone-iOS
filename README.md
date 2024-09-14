@@ -35,7 +35,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
-      allow read, write: if request.auth != null;
+      allow read: if request.auth != null;  // Anyone authenticated can read
+      allow write: if request.auth != null;  // Only authenticated users can write (create or update)
+      allow delete: if request.auth != null && // User must be authenticated
+                     request.auth.uid == resource.data.creatorId;  // AND their uid matches the document's creatorId field
     }
   }
 }
