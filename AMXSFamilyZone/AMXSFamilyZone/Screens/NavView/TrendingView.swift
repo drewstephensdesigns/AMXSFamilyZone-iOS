@@ -13,13 +13,13 @@ struct TrendingView: View {
     @ObservedObject var viewModel = TrendingViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     // Trending Posts Section
-                    Text("Trending Posts")
+                    Text("New Posts")
                         //.font(.headline)
-                        .font(.system(.headline, design: .monospaced))
+                        .font(.system(.title3, design: .monospaced))
                         .padding(.horizontal)
                     
                     ForEach(viewModel.trendingPosts) { post in
@@ -30,7 +30,7 @@ struct TrendingView: View {
                     // New Users Section
                     Text("New Users")
                         //.font(.headline)
-                        .font(.system(.headline, design: .monospaced))
+                        .font(.system(.title3, design: .monospaced))
                         .padding(.horizontal)
                         .padding(.top, 10)
                     
@@ -42,6 +42,7 @@ struct TrendingView: View {
                 .padding(.top, 10) // Add some top padding for the VStack
                 .frame(maxWidth: .infinity, alignment: .leading) // Ensure the VStack takes the full width and left-aligns content
             }
+            .navigationTitle("Trending")
         }
     }
 }

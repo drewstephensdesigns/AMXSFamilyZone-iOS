@@ -219,7 +219,7 @@ struct AddPostView: View {
         let firestore = Firestore.firestore()
         
         firestore.collection(Consts.USER_NODE).document(currentUser.uid).getDocument{document, error in
-            if let error = error {
+            if error != nil {
                 self.alertTitle = "Error"
                 self.alertMessage = "Error retrieving user document: (error.localizedDescription)"
                 self.showAlert = true

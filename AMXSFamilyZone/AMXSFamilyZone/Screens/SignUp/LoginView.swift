@@ -21,6 +21,7 @@ struct LoginView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
+                    .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 5)
 
                 Text("Sign In")
                     .font(.system(size: 40, weight: .medium, design: .default))
@@ -52,18 +53,26 @@ struct LoginView: View {
                 }) {
                     Text("Sign In")
                         .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
-                        .cornerRadius(5.0)
+                        .background(
+                            LinearGradient(gradient: Gradient(colors: [Color.red, Color.purple, Color.blue]), startPoint: .leading, endPoint: .trailing)
+                        )
+                        .cornerRadius(12)
+                        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 5)
                 }
                 .padding(.top, 20)
 
                 NavigationLink("Forgot Password?", destination: ForgotPasswordView())
+                    .font(.custom("Cochina", size: 17))
                     .foregroundColor(.blue)
                     .padding(.top, 10)
 
                 // Navigation to ContentView
-                NavigationLink("", destination: ContentView(), isActive: $navigatedToContent)
+                // This replaces the deprecated NavigationLink
+                .navigationDestination(isPresented: $navigatedToContent) {
+                    ContentView()
+                }
             }
             .padding()
         }

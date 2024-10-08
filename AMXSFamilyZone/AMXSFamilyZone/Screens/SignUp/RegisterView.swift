@@ -25,14 +25,19 @@ struct RegisterView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
+                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
                 
                 Text("Sign Up")
-                    .font(.system(size: 40, weight: .medium, design: .default))
+                    //.font(.system(size: 40, weight: .medium, design: .default))
+                    .font(.custom("Futura", size: 40))
+                    .fontWeight(.light)
                     .foregroundColor(.red)
                     .padding()
                 
                 Text("Welcome to the 317th AMXS Family Zone! View upcoming information and connect with 317 AMXS family, both active duty and spouses.")
-                    .font(.system(size: 15, weight: .light, design: .default))
+                    //.font(.system(size: 15, weight: .light, design: .default))
+                    .font(.custom("Futura", size: 15))
+                    .fontWeight(.light)
                     .multilineTextAlignment(.center)
                     .padding()
                 
@@ -69,10 +74,17 @@ struct RegisterView: View {
                     signIn()
                 }) {
                     Text("Sign Up")
+                        .font(.custom("Cochina", size: 16))
                         .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(5.0)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 40)
+                        .background(
+                            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing)
+                        )
+                        .cornerRadius(15)
+                        .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
                 }
                 .padding(.top, 20)
 
@@ -81,6 +93,7 @@ struct RegisterView: View {
                 }) {
                     Text("Already have an account? Log In")
                         .foregroundColor(.blue)
+                        .font(.custom("Cochina", size: 15))
                 }
                 .padding(.top, 10)
                 .navigationDestination(isPresented: $showLoginActivity) {

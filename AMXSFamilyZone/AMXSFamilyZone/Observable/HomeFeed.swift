@@ -18,7 +18,7 @@ class HomeFeed: ObservableObject {
     }
     
     func fetchPosts() {
-        guard let userId = currentUserID else { return }
+            //guard let userId = currentUserID else { return }
         
         db.collection(Consts.POST_NODE)
             //.whereField("creatorId", isNotEqualTo: userId)
@@ -38,6 +38,6 @@ class HomeFeed: ObservableObject {
                 self.posts = documents.compactMap { queryDocumentSnapshot in
                     return try? queryDocumentSnapshot.data(as: Post.self)
                 }
-        }
+            }
     }
 }

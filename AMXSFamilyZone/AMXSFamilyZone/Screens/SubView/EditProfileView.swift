@@ -27,52 +27,105 @@ struct EditProfileView: View {
     }
 
     var body: some View {
-        VStack {
-            if let url = URL(string: profileImageUrl), image == nil {
-                AsyncImage(url: url) { image in
-                    image.resizable()
+        VStack(spacing: 20) {
+            ZStack {
+                Circle()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(width: 100, height: 100)
+
+                if let url = URL(string: profileImageUrl), image == nil {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .clipShape(Circle())
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .overlay(Circle().stroke(Color.blue, lineWidth: 2))
+                    } placeholder: {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                            .foregroundColor(.gray)
+                    }
+                } else if let image = image {
+                    image
+                        .resizable()
+                        .clipShape(Circle())
                         .scaledToFit()
-                        .frame(height: 75)
-                } placeholder: {
+                        .frame(width: 100, height: 100)
+                        .overlay(Circle().stroke(Color.blue, lineWidth: 2))
+                } else {
                     Image(systemName: "person.circle")
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 75)
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.gray)
                 }
-            } else if let image = image {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 75)
-            } else {
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 75)
             }
 
-            Button("Change Picture") {
+            Button(action: {
                 self.showingImagePicker = true
+            }) {
+                Text("Change Picture")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [Color.primary, Color.purple]), startPoint: .leading, endPoint: .trailing)
+                    )
+                    .cornerRadius(12)
+                    .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 5)
             }
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                 ImagePicker(image: self.$inputImage)
             }
-
-            TextField("Name", text: $newUserName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-
-            TextField("Bio", text: $newBio)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-
-            TextField("Link", text: $newLink)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .textCase(.lowercase)
-
-            Button("Update Profile") {
-                updateUserProfile()
+            
+            VStack(alignment: .leading, spacing: 15) {
+                TextField("Name", text: $newUserName)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(12)
+                    .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 5)
+                
+                TextField("Bio", text: $newBio)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(12)
+                    .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 5)
+                
+                TextField("Link", text: $newLink)
+                    .autocapitalization(.none)
+                    .keyboardType(.URL)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(12)
+                    .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 5)
             }
-            .padding()
+            .padding(.horizontal)
+            
+            Button(action: {
+                updateUserProfile()
+            }) {
+                Text("Update Profile")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing)
+                    )
+                    .cornerRadius(20)
+                    .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+            }
+            .padding(.top, 30)
         }
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(20)
+        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 5)
+        .padding()
     }
 
     func loadImage() {
@@ -137,6 +190,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(name: "John Doe", bio: "This is the bio", website: "www.example.com", profileImageUrl: "")
+        EditProfileView(name: "John Doe", bio: "This is the bio", website: "www.example.com", profileImageUrl: "https://picsum.photos/id/27/500/500")
     }
 }

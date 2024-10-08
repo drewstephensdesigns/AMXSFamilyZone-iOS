@@ -12,156 +12,201 @@ import FirebaseStorage
 
 struct ProfileView: View {
    
-    @State private var name: String = ""
-    @State private var bio: String = ""
-    @State private var website: String = ""
-    @State private var profileImageUrl: String = ""
-    @State private var posts: [String] = []
+    @State private var userName: String = "johndoedev"
+    @State private var name: String = "John Doe"
+    @State private var bio: String = "We choose to go to the moon. We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard"
+    @State private var website: String = "https://johndoe.dev"
+    @State private var profileImageUrl: String = "https://picsum.photos/id/237/100/100"
+    @State private var posts: [String] = [
+        "https://picsum.photos/id/16/500/500",
+        "https://picsum.photos/id/37/500/500",
+        "https://picsum.photos/id/27/500/500",
+        "https://picsum.photos/id/73/500/500",
+        "https://picsum.photos/id/255/500/500",
+        "https://picsum.photos/id/317/500/500",
+        "https://picsum.photos/id/270/500/500",
+    ]
     @State private var selectedImageUrl: String? = nil
     @State private var isImagePresented: Bool = false
-    @State private var followersCount: Int = 0
-    @State private var followingCount: Int = 0
+    @State private var followersCount: Int = 100
+    @State private var followingCount: Int = 75
+    @State private var imageSize: CGFloat = 90
     
     var body: some View {
         NavigationView {
             ScrollView {
-                
                 VStack {
-                    
+                    // Profile Image and Counters
                     HStack {
                         let imageUrl = profileImageUrl.isEmpty ? Consts.DEFAULT_USER_IMAGE : profileImageUrl
                         if let url = URL(string: imageUrl) {
                             AsyncImage(url: url) { image in
                                 image.resizable()
-                                    .frame(width: 80, height: 80)
                                     .clipShape(Circle())
                                     .overlay(Circle().stroke(Color.blue, lineWidth: 1))
-                                    .padding(.leading, 20)
+                                    .frame(width: imageSize, height: imageSize)
+                                    .padding(.leading, 10)
+                                    .onTapGesture {
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            imageSize = (imageSize == 80) ? 110 : 80
+                                        }
+                                    }
                             } placeholder: {
                                 Image(systemName: "person.circle")
                                     .resizable()
                                     .frame(width: 80, height: 80)
                                     .clipShape(Circle())
                                     .overlay(Circle().stroke(Color.blue, lineWidth: 1))
-                                    .padding(.leading, 20)
+                                    .padding(.leading, 10)
                             }
                         }
                         
-                        VStack(alignment: .leading, spacing: 10) {
+                            // Followers, Following, Posts
                             HStack {
-                                Text("\(followersCount)")
-                                    .foregroundColor(.blue)
-                                    .font(.headline)
-                                Text("Followers")
-                                    .font(.headline)
+                                VStack {
+                                    Text("Followers")
+                                       // .font(.caption)
+                                        .font(.custom("Futura", size: 17))
+                                        .foregroundColor(.gray)
+                                    Text("\(followersCount)")
+                                        .font(.subheadline)
+                                }
+                                .frame(maxWidth: .infinity)
+
+                                VStack {
+                                    Text("Following")
+                                       // .font(.caption)
+                                        .font(.custom("Futura", size: 17))
+                                        .foregroundColor(.gray)
+                                        .padding(.leading, 5)
+                                    Text("\(followingCount)")
+                                        .font(.subheadline)
+                                        .padding(.leading, 5)
+                                        
+                                }
+                                .frame(maxWidth: .infinity)
+
+                                VStack {
+                                    Text("Posts")
+                                       // .font(.caption)
+                                        .font(.custom("Futura", size: 17))
+                                        .foregroundColor(.gray)
+                                    Text("\(posts.count)")
+                                        .font(.subheadline)
+                                }
+                                .frame(maxWidth: .infinity)
                             }
-                            HStack {
-                                Text("\(followingCount)")
-                                    .foregroundColor(.blue)
-                                    .font(.headline)
-                                Text("Following")
-                                    .font(.headline)
-                            }
-                            HStack {
-                                Text("\(posts.count)")
-                                    .foregroundColor(.blue)
-                                    .font(.headline)
-                                Text("Posts")
-                                    .font(.headline)
-                            }
-                        }
+                            .padding(.top, 10)
                         .padding(.leading, 10)
-                        .padding(.trailing, 10)
                         
                         Spacer()
-                        
-                        NavigationLink(destination: EditProfileView(name: name, bio: bio, website: website, profileImageUrl: profileImageUrl)) {
-                            Text("Edit Profile")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                        }
-                        .padding(.trailing, 20)
                     }
                     .padding(.top, 20)
-                    
+
+                    // Name, Bio, and Website
                     VStack(alignment: .leading) {
                         Text(self.name)
-                            .font(.custom("Futura", size: 16))
+                            .font(.custom("Futura", size: 18))
                             .padding(.top, 6)
                             .padding(.horizontal, 10)
                         
                         Text(self.bio)
-                            .font(.system(.callout, design: .rounded))
+                            .font(.custom("Cochina", size: 15))
                             .padding(.horizontal, 8)
+                            .multilineTextAlignment(.leading)
+                            .lineSpacing(6)
                             .padding(.top, 6)
                             .lineLimit(4)
                         
                         if !self.website.isEmpty {
-                            Text(self.website)
-                                .font(.footnote)
-                                .textCase(.lowercase)
-                                .foregroundColor(.blue)
-                                .padding(.horizontal, 8)
-                                .padding(.top, 6)
-                                .onTapGesture {
-                                    if let encodedUrl = self.website.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                                       let url = URL(string: encodedUrl) {
-                                        UIApplication.shared.open(url, options: [:]) { success in
-                                            if !success {
-                                                print("Failed to open URL: \(self.website)")
+                            HStack {
+                                // Icon
+                                Image(systemName: "link")
+                                    .foregroundColor(.blue)
+                                    .font(.subheadline)
+                                    .padding(.leading, 6)
+                                
+                                // URL Text
+                                Text(self.website)
+                                    .font(.subheadline)
+                                    .textCase(.lowercase)
+                                    .foregroundColor(.blue)
+                                    .padding(.horizontal, 2)
+                                    .onTapGesture {
+                                        if let encodedUrl = self.website.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                                           let url = URL(string: encodedUrl) {
+                                            UIApplication.shared.open(url, options: [:]) { success in
+                                                if !success {
+                                                    print("Failed to open URL: \(self.website)")
+                                                }
                                             }
+                                        } else {
+                                            print("Invalid URL: \(self.website)")
                                         }
-                                    } else {
-                                        print("Invalid URL: \(self.website)")
                                     }
-                                }
+                            }
+                            .padding(.top, 6)
                         }
+                        
+                        // Edit Profile Button (moved here)
+                        NavigationLink(destination: EditProfileView(name: name, bio: bio, website: website, profileImageUrl: profileImageUrl)) {
+                            Text("Edit Profile")
+                                .font(.custom("Cochina", size: 16))
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 40)
+                                .background(
+                                    LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing)
+                                )
+                                .cornerRadius(20)
+                                .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 10) // Add some space between the website and button
+                        
                         Divider()
                             .background(Color.secondary)
                             .padding(.top, 5)
                     }
+                    
                     .padding(.horizontal, 10)
                     
-                        // Grid of posts
-                        LazyVGrid(
-                            columns: [
-                                GridItem(.flexible(), spacing: 8),
-                                GridItem(.flexible(), spacing: 8),
-                                GridItem(.flexible(), spacing: 8)
-                            ],
-                            spacing: 8 // Adjust spacing between rows
-                        ) {
-                            ForEach(posts, id: \.self) { postUrl in
-                                if let url = URL(string: postUrl) {
-                                    AsyncImage(url: url) { image in
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 150, height: 150)
-                                            .clipped()
-                                            //.onTapGesture {
-                                            //    selectedImageUrl = postUrl
-                                            //    print("Fetched image URL: \(selectedImageUrl ?? "No URL")")
-                                           // }
-                                    } placeholder: {
-                                        Color.gray
-                                            .frame(width: 100, height: 100)
-                                    }
+                    // Grid of posts
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.flexible(), spacing: 8),
+                            GridItem(.flexible(), spacing: 8),
+                            GridItem(.flexible(), spacing: 8)
+                        ],
+                        spacing: 8
+                    ) {
+                        ForEach(posts, id: \.self) { postUrl in
+                            if let url = URL(string: postUrl) {
+                                AsyncImage(url: url) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .clipped()
+                                } placeholder: {
+                                    Color.gray
+                                        .frame(width: 100, height: 100)
                                 }
                             }
                         }
-                        .padding(.horizontal, 5) // Reduce padding to bring items closer to the edges
+                    }
+                    .padding(.horizontal, 5)
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle(self.userName)
             .onAppear {
-                fetchData()
+                //fetchData()
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle()) // Add this line
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
+    // Fetch data function remains unchanged
     private func fetchData() {
         let db = Firestore.firestore()
         
@@ -173,6 +218,7 @@ struct ProfileView: View {
                     if let data = document.data() {
                         DispatchQueue.main.async {
                             self.name = data["name"] as? String ?? ""
+                            self.userName = data["userName"] as? String ?? ""
                             self.bio = data["bio"] as? String ?? ""
                             self.website = data["link"] as? String ?? ""
                             self.profileImageUrl = data["profileImageUrl"] as? String ?? ""
@@ -183,7 +229,7 @@ struct ProfileView: View {
                 }
             }
             
-                // Fetch posts
+            // Fetch posts
             db.collection(Consts.POST_NODE).whereField("creatorId", isEqualTo: userId).getDocuments { (snapshot, error) in
                 if let snapshot = snapshot {
                     self.posts = snapshot.documents.compactMap { document in
@@ -197,6 +243,9 @@ struct ProfileView: View {
     }
 }
 
+
+// Not used
+// TODO: Allow user to click on an image to see a bigger view
 struct ImageViewer: View {
     var imageUrl: String?
     
@@ -233,4 +282,8 @@ struct ImageViewer: View {
             }
         }
     }
+}
+
+#Preview{
+    ProfileView()
 }

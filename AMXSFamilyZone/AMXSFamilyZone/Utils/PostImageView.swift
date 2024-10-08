@@ -14,7 +14,7 @@ struct PostImageView: View {
             WebImage(url: URL(string: imageUrl))
                 .resizable()
                 .scaledToFit()
-                //.frame(maxWidth: .infinity, maxHeight: 280, alignment: .center)
+                .frame(maxWidth: .infinity, maxHeight: 500, alignment: .center)
                 .cornerRadius(14)
                 .padding(.top, 8)
                 .padding(.horizontal, 8)

@@ -17,8 +17,9 @@ struct User: Codable, Identifiable {
     var imageUrl: String?
     var link: String?
     var accountCreated: Double
+    var userName: String
 
-    init(id: String = "", name: String, email: String, following: [String] = [], followers: [String] = [], bio: String = "", imageUrl: String = "", link: String = "", accountCreated: Double) {
+    init(id: String = "", name: String, email: String, following: [String] = [], followers: [String] = [], bio: String = "", imageUrl: String = "", link: String = "", accountCreated: Double, userName: String) {
         self.id = id
         self.name = name
         self.email = email
@@ -28,6 +29,7 @@ struct User: Codable, Identifiable {
         self.imageUrl = imageUrl
         self.link = link
         self.accountCreated = accountCreated * 1000
+        self.userName = userName
     }
 
     var dictionary: [String: Any?] {
@@ -40,7 +42,8 @@ struct User: Codable, Identifiable {
             "bio": bio,
             "imageUrl": imageUrl,
             "link": link,
-            "accountCreated" : accountCreated
+            "accountCreated" : accountCreated,
+            "userName" : userName
         ]
     }
     
